@@ -1,6 +1,5 @@
 const express = require("express")
 const bodyparser = require("body-parser")
-const sqlite3 = require("sqlite3")
 require("dotenv").config()
 
 const app = express()
@@ -25,7 +24,7 @@ app.get('./planets', (res, req) => {
         res.json(planets)
     })
 
-    // const result = await db.all("SELECT = FROM planets")
+    db.all(`SELECT id FROM planets WHERE homeworld=${planets.id}`)
 })
 
 app.get('/people/:id', (req, res) => {
